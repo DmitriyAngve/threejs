@@ -4,9 +4,9 @@ import { useSnapshot } from "valtio";
 import state from "../store";
 
 import {
-  // headContainerAnimation,
-  // headContentAnimation,
-  // headTextAnimation,
+  headContainerAnimation,
+  headContentAnimation,
+  headTextAnimation,
   slideAnimation,
 } from "../config/motion";
 
@@ -26,6 +26,20 @@ const Home = () => {
               className="w-8 h-8 object-contain"
             />
           </motion.header>
+          <motion.div className="home-content" {...headContainerAnimation}>
+            <motion.div {...headTextAnimation}>
+              <h1 className="head-text">
+                LET'S <br className="xl:block hidden" /> DO IT.
+              </h1>
+            </motion.div>
+            <motion.div>
+              <p>
+                Create your unique and exclusive shirt with our brand-new 3D
+                customization tool. <strong>Unleash your imagination</strong>{" "}
+                and define your own style.
+              </p>
+            </motion.div>
+          </motion.div>
         </motion.section>
       )}
     </AnimatePresence>
