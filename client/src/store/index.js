@@ -5,7 +5,7 @@ const state = proxy({
   // intro meaning are we currently on the Home page, or are we not
   intro: true,
   // shirt color
-  color: "#EFBD480",
+  color: "#EFBD48",
   // logo shirt
   isLogoTexture: true,
   isFullTexture: false,
