@@ -19,10 +19,10 @@ const Shirt = () => {
     <group>
       <mesh
         castShadow
-        geometry={nodes.T_Shirt_male.geometry}
-        material={materials.lambert1}
-        material-roughness={1}
-        dispose={null}
+        geometry={nodes.T_Shirt_male.geometry} // связывает геометрию футболки с соответствующим полем "geometry" в объекте "nodes.T_Shirt_male" - это экземпляр модели футболки из файла GLHF
+        material={materials.lambert1} // связывает материал футболки с соответсвующим полем "lambert1" в объекте "materials"."materials.lambert1" - экземпляр материала, используемого для отображения футболки
+        material-roughness={1} // шероховатость
+        dispose={null} // указывает, что при удалении компонента, связанные ресурсы (гео-ия, мат-лы) не должныбыть автоматически освобождены
       ></mesh>
     </group>
   );
