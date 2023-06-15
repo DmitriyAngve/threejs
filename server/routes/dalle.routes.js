@@ -6,6 +6,10 @@ dotenv.config();
 
 const router = express.Router();
 
+const config = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+}); // it's for configure the use of the DALLE API
+
 router.route("/").get((req, res) => {
   res.status(200).json({ message: "Hello from DALL.E ROUTES" });
 });
