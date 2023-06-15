@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSnapshot } from "valtio";
 
-import config from "../config/config"; // use this to set up url of my backend
+import config from "../config/config";
 import state from "../store";
 import { download } from "../assets";
 import { downloadCanvasToImage, reader } from "../config/helpers";
@@ -20,8 +20,10 @@ const Customizer = () => {
   const snap = useSnapshot(state);
 
   const [file, setFile] = useState("");
-  const [prompt, setPrompt] = useState(""); // AI prompt
+
+  const [prompt, setPrompt] = useState("");
   const [generatingImg, setGeneratingImg] = useState(false);
+
   const [activeEditorTab, setActiveEditorTab] = useState("");
   const [activeFilterTab, setActiveFilterTab] = useState({
     logoShirt: true,
@@ -36,9 +38,28 @@ const Customizer = () => {
       case "filepicker":
         return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
       case "aipicker":
-        return <AIPicker />;
+        return (
+          <AIPicker
+            prompt={prompt}
+            setPrompt={setPrompt}
+            generatingImg={generatingImg}
+            handleSubmit={handleSubmit}
+          />
+        );
       default:
         return null;
+    }
+  };
+
+  const handleSubmit = async (type) => {
+    if (!prompt) return alert("Please enter a prompt");
+
+    try {
+      // call our backend to generate an AI image!
+    } catch (error) {
+      alert(error);
+    } finally {
+      setActiveEditorTab("");
     }
   };
 
@@ -49,7 +70,7 @@ const Customizer = () => {
     // update the state ("logoDecal" and "fullDecal")
     state[decalType.stateProperty] = result;
     // meaning we want to figure out if that decal is currently active be that the logo which now breaks or the texture
-    if (!activeEditorTab[decalType.filterTab]) {
+    if (!activeFilterTab[decalType.filterTab]) {
       handleActiveFilterTab(decalType.filterTab);
     }
   };
@@ -57,22 +78,31 @@ const Customizer = () => {
   // Функция для свитча между логотипом и однотонной футболкой
   const handleActiveFilterTab = (tabName) => {
     switch (tabName) {
-      case "logo":
-        state.isLogoTexture = !activeEditorTab[tabName];
+      case "logoShirt":
+        state.isLogoTexture = !activeFilterTab[tabName];
+        break;
       case "stylishShirt":
-        state.isFullTexture = !activeEditorTab[tabName];
+        state.isFullTexture = !activeFilterTab[tabName];
+        break;
       default:
         state.isLogoTexture = true;
         state.isFullTexture = false;
+        break;
     }
+    // after setting the state, set the activateFilterTab is updated
+    setActiveFilterTab((prevState) => {
+      return {
+        ...prevState,
+        [tabName]: !prevState[tabName], // meaning it's going to toggle it on and off
+      };
+    });
   };
 
   // To get the reader file data
   const readFile = (type) => {
-    reader((result) => {
-      // Here we want to pass that file to the decals of the shirt depending on the type of that image
+    reader(file).then((result) => {
       handleDecals(type, result);
-      setActiveEditorTab(""); // it's meaning - reset it
+      setActiveEditorTab("");
     });
   };
 
@@ -85,7 +115,6 @@ const Customizer = () => {
             key="custom"
             className="absolute top-0 left-0 z-10"
             {...slideAnimation("left")}
-            // {...fadeAnimation("left")} - slide from the left
           >
             <div className="flex items-center min-h-screen">
               <div className="editortabs-container tabs">
@@ -97,13 +126,11 @@ const Customizer = () => {
                   />
                 ))}
 
-                {/* call the "generateTabContent" */}
                 {generateTabContent()}
               </div>
             </div>
           </motion.div>
 
-          {/* BACK BUTTON */}
           <motion.div
             className="absolute z-10 top-5 right-5"
             {...fadeAnimation}
@@ -125,8 +152,8 @@ const Customizer = () => {
                 key={tab.name}
                 tab={tab}
                 isFilterTab
-                isActiveTab=""
-                handleClick={() => {}}
+                isActiveTab={activeFilterTab[tab.name]}
+                handleClick={() => handleActiveFilterTab(tab.name)}
               />
             ))}
           </motion.div>
