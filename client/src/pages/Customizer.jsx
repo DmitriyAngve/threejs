@@ -53,9 +53,24 @@ const Customizer = () => {
 
   const handleSubmit = async (type) => {
     if (!prompt) return alert("Please enter a prompt");
-
     try {
       // call our backend to generate an AI image!
+      setGeneratingImg(true); // set to "true" - meaning I want to start the loading
+
+      const response = await fetch("http://localhost:8080/api/v1/dalle", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // указывается при отправке и получении данных в формате JSON (чтобы сервер и клиент могли правильно интерпретировать данные)
+        },
+
+        body: JSON.stringify({
+          prompt,
+        }),
+      });
+
+      const data = await response.json();
+      // from dalle.routes.js
+      handleDecals(type, `data:image/png;base, ${data.photo}`);
     } catch (error) {
       alert(error);
     } finally {
