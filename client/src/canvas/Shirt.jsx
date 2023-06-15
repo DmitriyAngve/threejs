@@ -17,7 +17,7 @@ const Shirt = () => {
 
   // easing to apply the color smoothly and not dramatically - for this, use "useFrame" (it's for apply the color smoothly)
   useFrame((state, delta) =>
-    easing.dampC(materials.lambert1.color, 0.25, delta)
+    easing.dampC(materials.lambert1.color, snap.color, 0.25, delta)
   );
 
   // key can it simply be a state. Recreate a string of the current state that we can pass in
