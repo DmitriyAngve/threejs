@@ -12,17 +12,17 @@ const ColorPicker = () => {
         color={snap.color}
         disableAlpha
         presetColors={[
-          "#FF9F55",
-          "#80C9A1",
-          "#F05F57",
-          "#A891D3",
-          "#FFC14D",
           "#6EC8FF",
-          "#C75EC4",
-          "#FF80AB",
-          "#8B6D9E",
-          "#FFB97D",
+          "#80C9A1",
+          "#A891D3",
           "#4BC0C8",
+          "#8B6D9E",
+          "#FF9F55",
+          "#FFB97D",
+          "#FFC14D",
+          "#F05F57",
+          "#FF80AB",
+          "#C75EC4",
           "#FF9F9C",
         ]}
         onChange={(color) => (state.color = color.hex)}
