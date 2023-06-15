@@ -34,12 +34,46 @@ const Customizer = () => {
       case "colorpicker":
         return <ColorPicker />;
       case "filepicker":
-        return <FilePicker />;
+        return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
       case "aipicker":
         return <AIPicker />;
       default:
         return null;
     }
+  };
+
+  const handleDecals = (type, result) => {
+    // type can be a logo or full texture. Define on original state
+    const decalType = DecalTypes[type]; // Квадратные скобки используются когда имена свойств объекта известны только во время выполнения и могут менятья в зависимости от условий
+
+    // update the state ("logoDecal" and "fullDecal")
+    state[decalType.stateProperty] = result;
+    // meaning we want to figure out if that decal is currently active be that the logo which now breaks or the texture
+    if (!activeEditorTab[decalType.filterTab]) {
+      handleActiveFilterTab(decalType.filterTab);
+    }
+  };
+
+  // Функция для свитча между логотипом и однотонной футболкой
+  const handleActiveFilterTab = (tabName) => {
+    switch (tabName) {
+      case "logo":
+        state.isLogoTexture = !activeEditorTab[tabName];
+      case "stylishShirt":
+        state.isFullTexture = !activeEditorTab[tabName];
+      default:
+        state.isLogoTexture = true;
+        state.isFullTexture = false;
+    }
+  };
+
+  // To get the reader file data
+  const readFile = (type) => {
+    reader((result) => {
+      // Here we want to pass that file to the decals of the shirt depending on the type of that image
+      handleDecals(type, result);
+      setActiveEditorTab(""); // it's meaning - reset it
+    });
   };
 
   // !snap.intro - home page
