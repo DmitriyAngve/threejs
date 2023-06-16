@@ -1,5 +1,5 @@
-// this is where we're going to pick the AI image
 import React from "react";
+
 import CustomButton from "./CustomButton";
 
 const AIPicker = ({ prompt, setPrompt, generatingImg, handleSubmit }) => {

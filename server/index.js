@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 // Set up needed middleware by calling the app.use command
 app.use(cors()); // avoid cross-origins problems
-app.use(express.json({ limit: "50mb" })); // specify the weight of the payload that we can send - limit is going to be 50mb
+app.use(express.json({ limig: "50mb" })); // specify the weight of the payload that we can send - limit is going to be 50mb
 
 app.use("/api/v1/dalle", dalleRoutes); // use dalle routes or consume them as a middleware
 

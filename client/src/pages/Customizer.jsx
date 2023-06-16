@@ -62,7 +62,6 @@ const Customizer = () => {
         headers: {
           "Content-Type": "application/json", // указывается при отправке и получении данных в формате JSON (чтобы сервер и клиент могли правильно интерпретировать данные)
         },
-
         body: JSON.stringify({
           prompt,
         }),
@@ -70,10 +69,12 @@ const Customizer = () => {
 
       const data = await response.json();
       // from dalle.routes.js
-      handleDecals(type, `data:image/png;base, ${data.photo}`);
+
+      handleDecals(type, `data:image/png;base64,${data.photo}`);
     } catch (error) {
       alert(error);
     } finally {
+      setGeneratingImg(false);
       setActiveEditorTab("");
     }
   };

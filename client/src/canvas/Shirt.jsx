@@ -1,6 +1,4 @@
 import React from "react";
-// Actual shirt model
-
 import { easing } from "maath";
 import { useSnapshot } from "valtio";
 import { useFrame } from "@react-three/fiber";

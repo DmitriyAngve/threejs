@@ -1,8 +1,8 @@
 // Backdrop is going to be backsplash behind the shirt
+import React, { useRef } from "react";
 import { easing } from "maath";
 import { useFrame } from "@react-three/fiber";
 import { AccumulativeShadows, RandomizedLight } from "@react-three/drei";
-import React, { useRef } from "react";
 
 const Backdrop = () => {
   const shadows = useRef(); // We need to reference to that specific Shadows later on
