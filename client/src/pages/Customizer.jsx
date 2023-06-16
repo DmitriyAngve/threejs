@@ -57,15 +57,18 @@ const Customizer = () => {
       // call our backend to generate an AI image!
       setGeneratingImg(true); // set to "true" - meaning I want to start the loading
 
-      const response = await fetch("http://localhost:8080/api/v1/dalle", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json", // указывается при отправке и получении данных в формате JSON (чтобы сервер и клиент могли правильно интерпретировать данные)
-        },
-        body: JSON.stringify({
-          prompt,
-        }),
-      });
+      const response = await fetch(
+        "https://threejs-ncng.onrender.com/api/v1/dalle",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json", // указывается при отправке и получении данных в формате JSON (чтобы сервер и клиент могли правильно интерпретировать данные)
+          },
+          body: JSON.stringify({
+            prompt,
+          }),
+        }
+      );
 
       const data = await response.json();
       // from dalle.routes.js
