@@ -1,2 +1,0 @@
-buildCommand: yarn install --frozen-lockfile
-startCommand: yarn start
