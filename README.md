@@ -27,7 +27,7 @@ To run this project locally, follow these steps:
 
 1. Clone the repository.
 2. Install dependencies for the frontend and backend.
-```bash
+
 # Перейдите в каталог клиентской части
 cd client
 
