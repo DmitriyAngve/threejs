@@ -29,19 +29,19 @@ To run this project locally, follow these steps:
 2. Install dependencies for the frontend and backend.
    
 # Перейдите в каталог клиентской части
-```bash
+`bash
 cd client
-```
+`
 # Установите зависимости для серверной части
-```bash
+`bash
 npm install
-```
+`
 # Вернитесь в каталог серверной части
-```bash
+`bash
 cd ../server
-```
+`
 # Установите зависимости для серверной части
-```bash
+`bash
 npm install
-```
+`
 
