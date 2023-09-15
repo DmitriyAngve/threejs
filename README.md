@@ -27,22 +27,21 @@ To run this project locally, follow these steps:
 
 1. Clone the repository.
 2. Install dependencies for the frontend and backend.
-
+   
 # Перейдите в каталог клиентской части
+```bash
 cd client
-
+```
 # Установите зависимости для серверной части
+```bash
 npm install
-
+```
 # Вернитесь в каталог серверной части
+```bash
 cd ../server
-
+```
 # Установите зависимости для серверной части
+```bash
 npm install
+```
 
-
-```bash
-# Перейдите в каталог клиентской части
-```bash
-# Перейдите в каталог клиентской части
-cd client
