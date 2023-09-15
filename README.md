@@ -26,8 +26,7 @@ This is a fullstack project built using the React + Express stack.
 To run this project locally, follow these steps:
 
 1. Clone the repository.
-2. Install dependencies for the frontend and backend.
-   
+2. Install dependencies for the frontend and backend:   
 ### Перейдите в каталог клиентской части
 ```bash
 cd client
