@@ -2,7 +2,7 @@
 
 This is a fullstack project built using the React + Express stack.
 
-[Live Demo](https://threejs-angve.netlify.app/)
+[Explore the Live Demo](https://threejs-angve.netlify.app/)
 
 ## Technologies Used
 
