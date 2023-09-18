@@ -26,8 +26,11 @@ This is a fullstack project built using the React + Express stack.
 To run this project locally, follow these steps:
 
 1. Clone the repository.
+```bash
+git clone https://github.com/DmitriyAngve/threejs
+```
 2. Install dependencies for the frontend and backend:   
-### Перейдите в каталог клиентской части
+#### Перейдите в каталог клиентской части
 ```bash
 cd client
 ```
