@@ -9,7 +9,7 @@ This is a fullstack project built using the React + Express stack.
 - **ThreeJS**: Used for rendering and animating the 3D model.
 - **React Three Fiber**: Employed for creating 3D graphics with ThreeJS in React.
 - **Framer Motion**: Utilized for animations.
-- **TailwindCSS**: Used as the CSS styling framework.
+- **TailwindCSS**: A utility-first CSS framework for simplified and consistent styling.
 - **Express**: Used as the backend framework for the server.
 - **Vite**: Used for fast and efficient development and building of the frontend.
 
